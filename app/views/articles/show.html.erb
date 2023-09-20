@@ -1,0 +1,15 @@
+
+<h1><%= @article.title %></h1>
+<p><%= @article.description %></p>
+<% if @article.banner_url %>
+  <%= image_tag @article.banner_url %>
+<% end %>
+
+<h2>Comments:</h2>
+<% @comments.each do |comment| %>
+  <p><strong><%= comment.name %>:</strong></p>
+  <p><%= comment.description %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

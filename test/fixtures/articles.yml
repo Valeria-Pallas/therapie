@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  image: MyString
+  banner_url: MyString
   description: MyText
   user: one
 
 two:
   title: MyString
-  image: MyString
+  banner_url: MyString
   description: MyText
   user: two
