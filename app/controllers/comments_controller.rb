@@ -6,17 +6,23 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
   end
-
+  def show
+    @article = Article.find(params[:article_id])
+    @comments = @article.comments
+    @comment = Comment.new
+  end
   def create
+    @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @article, notice: 'Comment was successfully created.'
+      redirect_to @article, notice: 'Comentario creado exitosamente.'
     else
-      render :new
+      render 'articles/show'
     end
   end
+
 
   def edit
   end
@@ -45,6 +51,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:name, :description)
+    params.require(:comment).permit(:name, :description, :user, :article_id)
   end
+
 end

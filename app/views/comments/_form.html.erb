@@ -25,3 +25,11 @@
     <%= form.submit %>
   </div>
 <% end %>
+<%= form_with(model: [@article, @comment]) do |form| %>
+  <%= form.hidden_field :article_id, value: @article.id %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <%= form.submit "Create Comment" %>
+<% end %>
