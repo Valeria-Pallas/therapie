@@ -1,27 +1,52 @@
-<h1>Articles</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= image_path('https://cdn.pixabay.com/photo/2017/09/06/21/43/crystal-2723145_1280.jpg') %>)">
+  <div class="container">
+    <h1>My article Manager</h1>
+    <p>Manage, Cultivate and Grow your article and your Experience</p>
+    <%= link_to "Discover", "#how", class: "btn btn-flat" %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td>
-          <%= link_to 'Show', article %>
-          <%= link_to 'Edit', edit_article_path(article) %>
-          <%= link_to 'Delete', article, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to 'New Article', new_article_path %>
+<div class="container">
+  <div class="section">
+    <h2 id="how" class="text-center">How does it work?</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <%= link_to new_article_path do %>
+          <div class="icon">
+            <%#= image_tag "article.svg" %>
+          </div>
+        <% end %>
+        <p class="text-center fs-24">Create your article</p>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <%= link_to new_article_path do %>
+          <div class="icon">
+            <%#= image_tag "circles.svg" %>
+          </div>
+        <% end %>
+        <p class="text-center fs-24">Add your plants</p>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <%= link_to new_article_path do %>
+          <div class="icon">
+            <%#= image_tag "watering.svg" %>
+          </div>
+        <% end %>
+        <p class="text-center fs-24">Manage your daily activity</p>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2 class="text-center">Our Community Best articles</h2>
+    <div class="cards">
+      <% @articles.each do |article| %>
+        <%= render "article_card", article: article %>
+      <% end %>
+    </div>
+  </div>
+  <div class="section">
+    <div class="text-center">
+      <%= link_to "Create my article", new_article_path, class: "btn btn-flat" %>
+    </div>
+  </div>
+</div>

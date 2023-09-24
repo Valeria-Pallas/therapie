@@ -1,0 +1,4 @@
+<div class="card-article" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= article.image_url %>), url('https://source.unsplash.com/400x300/?flower')">
+  <%= article.name %>
+  <%= link_to "+", article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "card-remove-link" %>
+</div>
